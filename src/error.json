@@ -1,0 +1,18 @@
+{
+  "USER_NOT_FOUND": {
+    "msg": "User not found!",
+    "httpCode": 404
+  },
+  "DUPLICATED_USER": {
+    "msg": "Username has been taken!",
+    "httpCode": 409
+  },
+  "CREDENTIALS_NOT_VALID": {
+    "msg": "Credentials are not valid!",
+    "httpCode": 400
+  },
+  "SYS_ERROR": {
+    "msg": "Something got wrong, sorry!",
+    "httpCode": 500
+  }
+}
