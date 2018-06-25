@@ -4,7 +4,6 @@
  */
 import * as fs from 'fs'
 
-
 /**
  * API error description type
  * @typedef {Object} APIErrorDescription
@@ -26,15 +25,19 @@ let APIErrorsMap = []
  * @extends Error
  */
 class APIError extends Error {
+
     /**
      * @param {string} label Label to be found on {@link APIErrorsMap}
      */
     constructor(label) {
-        let apiError = APIErrorsMap[label]
-        if (!apiError) super(label)
+        const apiError = APIErrorsMap[label]
+        super(
+            apiError
+            ? apiError.msg
+            : label
+        )
 
-        super(apiError.msg)
-        this.httpCode = apiError.httpCode
+        if (apiError) this.httpCode = apiError.httpCode
     }
 
     /**
@@ -45,7 +48,7 @@ class APIError extends Error {
      * @param {Express.Next} [next]
      * @static
      */
-    static errorHandler = (error, req, res, next) => {
+    static errorHandler = (error, req, res) => {
         let err = APIErrorsMap.SYS_ERROR
 
         if (error.httpCode) err = error
@@ -58,13 +61,12 @@ class APIError extends Error {
      * @param {string} path path to JSON document which contain the {@link APIErrorDescription} array
      * @static
      */
-    static setAPIErrors = (path) => {
+    static setAPIErrors = path => {
         try {
             const file = fs.readFileSync(`${global.__baseUrl}/${path}`)
-            if (!file) throw new Error('Something got wrong with APIError confi file on:\n ${path}')
-
+            if (!file) throw new Error(`Something got wrong with APIError config file on:\n ${path}`)
             APIErrorsMap = JSON.parse(file)
-        } catch(e) {
+        } catch (e) {
             throw e
         }
     }

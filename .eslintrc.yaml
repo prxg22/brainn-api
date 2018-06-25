@@ -2,6 +2,7 @@ env:
   es6: true
   node: true
 extends: 'eslint:recommended'
+parser: 'babel-eslint'
 plugins:
   - babel
 parserOptions:
@@ -23,15 +24,14 @@ rules:
     - error
     - after: true
       before: true
-  babel/semi: 1
+  babel/semi: off
   block-scoped-var: error
   block-spacing: error
   brace-style: error
   callback-return: error
   camelcase: error
-  capitalized-comments: error
   class-methods-use-this: error
-  comma-dangle: error
+  comma-dangle: off
   comma-spacing:
     - error
     - after: true
@@ -94,9 +94,7 @@ rules:
     - always
   new-cap: error
   new-parens: error
-  newline-after-var:
-    - error
-    - always
+  newline-after-var: off
   newline-before-return: off
   newline-per-chained-call: 'off'
   no-console: off
@@ -167,7 +165,7 @@ rules:
   no-shadow: error
   no-shadow-restricted-names: error
   no-spaced-func: error
-  no-sync: error
+  no-sync: off
   no-tabs: error
   no-template-curly-in-string: error
   no-ternary: 'off'
@@ -175,7 +173,7 @@ rules:
   no-trailing-spaces: error
   no-undef-init: error
   no-undefined: error
-  no-underscore-dangle: error
+  no-underscore-dangle: off
   no-unmodified-loop-condition: error
   no-unneeded-ternary: error
   no-use-before-define: error
@@ -188,14 +186,14 @@ rules:
   no-useless-return: error
   no-var: error
   no-void: error
-  no-warning-comments: error
+  no-offing-comments: off
   no-whitespace-before-property: error
   no-with: error
   object-curly-newline: error
   object-curly-spacing:
     - error
     - always
-  object-property-newline: error
+  object-property-newline: off
   object-shorthand: error
   one-var: 'off'
   one-var-declaration-per-line: error
@@ -216,7 +214,7 @@ rules:
     - single
   radix: error
   require-await: off
-  require-jsdoc: error
+  require-jsdoc: off
   rest-spread-spacing: error
   semi: 'off'
   semi-spacing: error
@@ -240,7 +238,7 @@ rules:
   unicode-bom:
     - error
     - never
-  valid-jsdoc: error
+  valid-jsdoc: off
   vars-on-top: error
   wrap-iife: error
   wrap-regex: error

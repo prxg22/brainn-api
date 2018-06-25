@@ -1,4 +1,3 @@
-import User from './User';
-import Auth from './Auth';
+import Repo from './Repo';
 
-export { User, Auth };
+export { Repo };

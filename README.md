@@ -46,6 +46,8 @@ An API to get and classify by tags user's Github repos
 <dd></dd>
 <dt><a href="#module_libs/APIError">libs/APIError</a></dt>
 <dd></dd>
+<dt><a href="#module_libs/GithubAPI">libs/GithubAPI</a></dt>
+<dd></dd>
 <dt><a href="#module_libs/Route">libs/Route</a></dt>
 <dd></dd>
 <dt><a href="#Route.module_User">User</a></dt>
@@ -181,6 +183,72 @@ API error description type
 | --- | --- | --- |
 | msg | <code>string</code> | Error msg |
 | httpCode | <code>number</code> | Response HTTP status code |
+
+<a name="module_libs/GithubAPI"></a>
+
+## libs/GithubAPI
+**Author**: Paulo Ricardo Xavier Giusti  
+
+* [libs/GithubAPI](#module_libs/GithubAPI)
+    * [~url](#module_libs/GithubAPI..url) : <code>String</code>
+    * [~reposUrl](#module_libs/GithubAPI..reposUrl) : <code>String</code>
+    * [~languagesUrl](#module_libs/GithubAPI..languagesUrl) : <code>String</code>
+    * [~formatRepoUrl(username)](#module_libs/GithubAPI..formatRepoUrl) ⇒ <code>String</code>
+    * [~formatLanguageUrl(username, repo)](#module_libs/GithubAPI..formatLanguageUrl) ⇒ <code>String</code>
+    * [~getUserStarredRepos(username)](#module_libs/GithubAPI..getUserStarredRepos) ⇒ <code>Array.&lt;Github.Repo&gt;</code>
+
+<a name="module_libs/GithubAPI..url"></a>
+
+### libs/GithubAPI~url : <code>String</code>
+main Github API url
+
+**Kind**: inner constant of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+<a name="module_libs/GithubAPI..reposUrl"></a>
+
+### libs/GithubAPI~reposUrl : <code>String</code>
+repos URI with replaceable name
+
+**Kind**: inner constant of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+<a name="module_libs/GithubAPI..languagesUrl"></a>
+
+### libs/GithubAPI~languagesUrl : <code>String</code>
+languages URI
+
+**Kind**: inner constant of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+<a name="module_libs/GithubAPI..formatRepoUrl"></a>
+
+### libs/GithubAPI~formatRepoUrl(username) ⇒ <code>String</code>
+format url to request Github for user's starred repos within parameters
+
+**Kind**: inner method of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>String</code> | Github's username |
+
+<a name="module_libs/GithubAPI..formatLanguageUrl"></a>
+
+### libs/GithubAPI~formatLanguageUrl(username, repo) ⇒ <code>String</code>
+format url to request Github for user's repo languages
+
+**Kind**: inner method of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>String</code> | Github's username |
+| repo | <code>String</code> | Github's repo |
+
+<a name="module_libs/GithubAPI..getUserStarredRepos"></a>
+
+### libs/GithubAPI~getUserStarredRepos(username) ⇒ <code>Array.&lt;Github.Repo&gt;</code>
+get user's starred repos
+
+**Kind**: inner method of [<code>libs/GithubAPI</code>](#module_libs/GithubAPI)  
+**See**: [https://developer.github.com/v3/repos/#list-user-repositories](Github)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>String</code> | Github's username |
 
 <a name="module_libs/Route"></a>
 

@@ -9,10 +9,13 @@
     "body-parser": "~1.18.3",
     "express": "~4.16.3",
     "jsonwebtoken": "~8.3.0",
-    "mongoose": "~5.1.6"
+    "mongoose": "~5.1.6",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "babel-cli": "~6.26.0",
+    "babel-eslint": "^8.2.5",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "~1.7.0",
@@ -29,12 +32,13 @@
     "build": "npm run clean && npm run babel",
     "clean": "rm -rf node-modules",
     "docs": "jsdoc2md --private -t config/jsdoc2md/README.hbs src/**/**/**/*.js > README.md; echo",
+    "dev": "npm run lint && babel-node",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix src/",
-    "start": "PORT=3030 nodemon src/ --exec babel-node",
+    "start": "PORT=3030 nodemon src/ --exec npm run dev --",
     "serve": "PORT=8080 node dist/index.js",
     "test": "mocha --compilers js:babel-register test/**/*.js",
-    "test:watch": "mocha --compilers js:babel-register test/**/*.js --watch"
+    "test:watch": "mocha --compilers js:babel-register test/ --recursive --watch"
   },
   "repository": {
     "type": "git",
