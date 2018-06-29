@@ -1,4 +1,3 @@
-// Import Repo from './Repo';
-//
-//
-// Export default { Repo };
+import Repo from './Repo'
+
+export default { Repo }

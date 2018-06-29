@@ -1,10 +1,26 @@
 {
   "REPOS_NOT_FOUND": {
-    "msg": "User not found!",
+    "msg": "User's repo not found! Please check the username",
+    "httpCode": 404
+  },
+  "REPO_NOT_FOUND": {
+    "msg": "Repo not found! Please check the _id",
     "httpCode": 404
   },
   "INVALID_USERNAME": {
     "msg": "Invalid username!",
+    "httpCode": 404
+  },
+  "INVALID_REPO_DESCRIPTION": {
+    "msg": "Invalid repository description!",
+    "httpCode": 400
+  },
+  "INVALID_REPO_ID": {
+    "msg": "Invalid repository id!",
+    "httpCode": 400
+  },
+  "INVALID_TAGS": {
+    "msg": "Invalid tags!",
     "httpCode": 400
   },
   "SYS_ERROR": {

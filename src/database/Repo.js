@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const repoSchema = mongoose.Schema({
+const repoSchema = mongoose.Schema({ // eslint-disable-line
     name: {
         type: String,
         required: true
@@ -15,7 +15,8 @@ const repoSchema = mongoose.Schema({
     },
     lastSearch: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now()
     },
     languages: [String],
 })
@@ -25,5 +26,28 @@ repoSchema.index({
     starredBy: 1,
 })
 
-const repoModel = repoModel || mongoose.model('repo', repoSchema)
-export default repoModel
+repoSchema.statics.findOrCreate = async function(data) {
+    try {
+        let repo = await this.findOne(data)
+        if (repo) {
+            repo.languages = data.languages
+            repo.lastSearch = Date.now()
+            await repo.save()
+        } else repo = await this.create(data)
+
+        return repo
+
+    } catch (e) {
+        throw e
+    }
+
+}
+// models
+let repo
+try {
+    repo = mongoose.model('repo')
+} catch (e) {
+    repo = mongoose.model('repo', repoSchema)
+}
+
+export default repo

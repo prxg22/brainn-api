@@ -48,11 +48,16 @@ class APIError extends Error {
      * @param {Express.Next} [next]
      * @static
      */
-    static errorHandler = (error, req, res) => {
-        let err = APIErrorsMap.SYS_ERROR
+    static errorHandler = (error, req, res, next) => { // eslint-disable-line
+        if (!(error instanceof Error)) {
+            res()
+            return
+        }
+
+        let err = new APIError('SYS_ERROR')
 
         if (error.httpCode) err = error
-
+        console.error(error)
         res.status(err.httpCode).send(err.message)
     }
 

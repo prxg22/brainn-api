@@ -1,22 +1,31 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 class Database {
     connect = async () => {
-        mongoose.Promise = global.Promise;
+        mongoose.Promise = global.Promise
 
         // Database connection
         try {
-            await mongoose.connect('mongodb://127.0.0.1:27017');
+            await mongoose.connect('mongodb://127.0.0.1:27017/brainn')
+            console.log('> database connection succeed!')
+            return mongoose.connection
         } catch (e) {
-            throw new Error(e);
+            throw new Error(e.msg)
         }
 
-        console.log('> database connection succeed!');
-        this.connection = mongoose.connection;
 
-        return this.connection;
-    };
+    }
+
+    disconnect = async () => {
+        try {
+            await mongoose.connection.close()
+            console.log('> database disconnected!')
+
+        } catch (e) {
+            throw new Error(e.msg)
+        }
+    }
 
 }
 
-export default new Database();
+export default new Database()

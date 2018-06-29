@@ -32,10 +32,10 @@
     "build": "npm run clean && npm run babel",
     "clean": "rm -rf node-modules",
     "docs": "jsdoc2md --private -t config/jsdoc2md/README.hbs src/**/**/**/*.js > README.md; echo",
-    "dev": "npm run lint && babel-node",
+    "start": "nodemon src/ --exec npm run dev --",
+    "dev": "npm run lint && babel-node --inspect",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix src/",
-    "start": "PORT=3030 nodemon src/ --exec npm run dev --",
     "serve": "PORT=8080 node dist/index.js",
     "test": "mocha --compilers js:babel-register test/**/*.js",
     "test:watch": "mocha --compilers js:babel-register test/ --recursive --watch"
