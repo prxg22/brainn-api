@@ -13,7 +13,6 @@ describe('Repo domain module', () => {
         this.timeout(5000)
         try {
             await Database.connect()
-            await GithubAPI.authenticate('prxg22', '661ac6e1f96aff9122ff4817ecf3531c59343c82')
             global.__baseUrl = __dirname
             APIError.setAPIErrors('../../src/error.json')
         } catch (e) {
