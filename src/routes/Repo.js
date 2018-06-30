@@ -59,12 +59,11 @@ const getUserRepos = async (req, res, next) => {
  */
 const updateRepoTags = async (req, res, next) => {
     const { params, body } = req
-
     try {
         if (!params || !params._id) throw new APIError('INVALID_REPO_ID')
         if (!body || !body.tags) throw new APIError('INVALID_TAGS')
 
-        const repo = await RepoDomain.updateTags(params._id, JSON.parse(body.tags))
+        const repo = await RepoDomain.updateTags(params._id, body.tags)
 
         return res.send(repo)
     } catch (e) {
@@ -92,4 +91,5 @@ const search = async (req, res, next) => {
         return next(e)
     }
 }
+
 export default Repo

@@ -30,12 +30,13 @@ const getUserReposFromDB = async starredBy => {
        const repos = await Repo.find({
            starredBy,
            lastSearch
-       })
+       }).select('name tags languages _id')
 
        return repos
    } catch (e) {
        throw new APIError('REPOS_NOT_FOUND')
    }
+
 }
 
 /**
@@ -158,18 +159,15 @@ const updateTags = async (_id, tags) => {
  */
 const get = async ({ tags, starredBy }) => {
     const query = {}
-
     let parsedTags
     if (tags) parsedTags = JSON.parse(tags)
 
-    if (parsedTags && parsedTags.length === 1) query.tags = parsedTags[0]
-    else if (parsedTags) query.tags = { $all: parsedTags }
+    if (parsedTags) query.tags = { $all: parsedTags }
 
-    console.log(query.tags)
     if (starredBy && typeof starredBy === 'string') query.starredBy = starredBy
 
     try {
-        const repos = await Repo.find(query)
+        const repos = await Repo.find(query).select('name tags languages _id')
         if (!repos || repos.length < 1) throw new APIError('REPO_NOT_FOUND')
 
         return repos

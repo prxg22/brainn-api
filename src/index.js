@@ -58,6 +58,7 @@ const config = async () => {
             res.set('Access-Control-Allow-Origin', req.get('origin'))
             res.set('Access-Control-Allow-Credentials', true)
             res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE')
+            res.set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With')
             res.set('Access-Control-Max-Age', '3600')
             next()
         })
